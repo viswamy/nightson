@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 100
+max-complexity = 14
+exclude = ./docs/
+ignore = E123,E133,E226,E241,E242,E731,W503
+
