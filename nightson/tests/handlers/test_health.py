@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from tinyurl.tests.handlers.test_base import TestBaseHandler
+from nightson.tests.handlers.test_base import TestBaseHandler
 
 import tornado
 

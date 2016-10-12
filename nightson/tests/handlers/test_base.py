@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 from tornado.testing import AsyncHTTPTestCase
-from tinyurl import server
+from nightson import server
 
 
 class TestBaseHandler(AsyncHTTPTestCase):

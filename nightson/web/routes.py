@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from tinyurl.handlers.health import HealthHandler
+from nightson.handlers.health import HealthHandler
 
 
 def get_routes():

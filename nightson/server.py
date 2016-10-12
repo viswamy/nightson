@@ -1,7 +1,7 @@
 import tornado.ioloop
 import tornado.web
 
-from tinyurl.web import routes
+from nightson.web import routes
 
 
 def make_app():

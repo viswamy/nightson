@@ -5,14 +5,14 @@ from setuptools import setup, find_packages
 __version__ = '1.0.0'
 
 setup(
-	name = 'tinyurl',
+	name = 'nightson',
 	version = __version__,
-	url = 'http://github.com/vswamy/tinyurl',
+	url = 'http://github.com/vswamy/nightson',
 	packages = find_packages(),
 	author_email = ['vswamy@outlook.com'],
 	entry_points = {
 		'console_scripts': [
-			'tinyurl-tornado=tinyurl.server:serve',
+			'nightson-tornado=nightson.server:serve',
 		],
 	},
 )
