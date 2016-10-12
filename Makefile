@@ -1,8 +1,8 @@
 # Project Build Commands
 
-project := tinyurl
+project := nightson
 flake8 := flake8
-TARGET ?= tinyurl/tests
+TARGET ?= nightson/tests
 TEST_ARGS ?=
 
 pytest_args := -rxs --tb short $(TEST_ARGS) $(project) $(TARGET)
@@ -47,7 +47,7 @@ testhtml: clean
 
 .PHONY: serve
 serve:
-	tinyurl-tornado
+	nightson-tornado
 
 
 .PHONY: lint
