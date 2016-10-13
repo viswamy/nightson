@@ -1,0 +1,29 @@
+brew install postgres => to install postgres
+brew install postgis => to install spatial extension for postgres
+
+Just installing postgis is not enough. It needs to be enabled at database level.
+select nightson database and run the following commands to enable postgis for nightson database.
+    -- Enable PostGIS (includes raster)
+    CREATE EXTENSION postgis;
+    -- Enable Topology
+    CREATE EXTENSION postgis_topology;
+    -- Enable PostGIS Advanced 3D
+    -- and other geoprocessing algorithms
+    -- sfcgal not available with all distributions
+    CREATE EXTENSION postgis_sfcgal;
+    -- fuzzy matching needed for Tiger
+    CREATE EXTENSION fuzzystrmatch;
+    -- rule based standardizer
+    CREATE EXTENSION address_standardizer;
+    -- example rule data set
+    CREATE EXTENSION address_standardizer_data_us;
+    -- Enable US Tiger Geocoder
+    CREATE EXTENSION postgis_tiger_geocoder;
+
+
+Other commands:
+    psql => opens postgres command line with default user
+    cheat sheet => http://www.postgresonline.com/downloads/special_feature/postgresql83_psql_cheatsheet.pdf
+    \c database => change databse to 'databsae'
+    \dt => display tables
+    \di => display indexes

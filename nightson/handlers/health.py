@@ -1,12 +1,11 @@
 from __future__ import absolute_import
 
 import httplib
-import tornado
-
+from nightson.handlers.base import BaseHandler
 from tornado import gen
 
 
-class HealthHandler(tornado.web.RequestHandler):
+class HealthHandler(BaseHandler):
 
     @gen.coroutine
     def get(self):
