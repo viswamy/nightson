@@ -55,7 +55,8 @@ class SessionManager(BaseEntityManager):
             u.location_recorded_at,
             u.created_at,
             u.updated_at,
-            u.deleted_at
+            u.deleted_at,
+            s.token as token
         FROM Users AS u INNER JOIN Sessions s ON (u.id = s.user_id)
         WHERE s.token = '{0}';
         '''.format(token)
