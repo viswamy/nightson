@@ -35,5 +35,35 @@ class SessionManager(BaseEntityManager):
         result = cursor.fetchone()
         raise gen.Return(result)
 
+    @gen.coroutine
+    def authenticate_token(self):
+        ''' Authenticates a token and returns the relevant User Object!'''
+
+        headers = self.request.headers
+        token = headers.get('x-auth-token')
+        if not token:
+            raise gen.Return(None)
+
+        sql = ''' SELECT
+            u.id,
+            u.first_name,
+            u.last_name,
+            u.email,
+            u.photo_url,
+            u.phone,
+            ST_AsGeoJson(u.location) as location,
+            u.location_recorded_at,
+            u.created_at,
+            u.updated_at,
+            u.deleted_at
+        FROM Users AS u INNER JOIN Sessions s ON (u.id = s.user_id)
+        WHERE s.token = '{0}';
+        '''.format(token)
+
+        cursor = yield self.execute_sql(sql)
+        result = cursor.fetchone()
+        print(result)
+        raise gen.Return(result)
+
 
 

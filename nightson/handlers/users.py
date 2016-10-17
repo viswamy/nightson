@@ -13,6 +13,7 @@ class UsersHandler(BaseHandler):
     @gen.coroutine
     def get(self):
         ''' Returns an event given an ID '''
+        print(self.get_argument('id'))
         users_entity_manager = UsersEntityManager(self.request)
 
         result = yield users_entity_manager.fetch_one()
