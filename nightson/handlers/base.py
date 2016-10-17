@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import httplib
 import tornado
 
 from tornado import gen
@@ -13,7 +12,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     @gen.coroutine
     def execute_sql(self, sql):
-        ''' Executes an sql statement and returns the value '''
+        ''' Executes an sql statement and returns the cursor '''
         cursor = yield self.db.execute(sql)
         raise gen.Return(cursor)
 

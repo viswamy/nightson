@@ -30,11 +30,14 @@ CREATE TABLE Users(
 
 
 CREATE TABLE Events(
-  id INT PRIMARY KEY NOT NULL ,
+  id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(64) NOT NULL ,
+  location GEOGRAPHY(POINT,4326) ,
   start_time TIMESTAMP NOT NULL ,
-  end_time TIMESTAMP NOT NULL ,
-  location GEOGRAPHY(POINT,4326)
+  end_time TIMESTAMP NOT NULL,
+  created_at TIMESTAMP,
+  deleted_at TIMESTAMP,
+  updated_at TIMESTAMP
 );
 
 CREATE TABLE Sessions(
