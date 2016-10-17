@@ -6,18 +6,33 @@ from tornado import gen
 
 class EventsEntityManager(BaseEntityManager):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         pass
 
+    def __init__(self, request):
+        super(EventsEntityManager, self).__init__(request)
+
     @gen.coroutine
-    def fetch_one(self, id):
+    def fetch_one(self):
         ''' returns one event given an id '''
-        sql = ''' SELECT * FROM Events WHERE id={}; '''.format(id)
+
+        id = self.get_value('id')
+        sql = ''' SELECT
+                    id,
+                    name,
+                    ST_AsGeoJson(location) AS location,
+                    start_time,
+                    end_time,
+                    created_at,
+                    deleted_at,
+                    updated_at
+                    FROM Events WHERE id={};
+            '''.format(id)
         cursor = yield self.execute_sql(sql)
         raise gen.Return(cursor.fetchone())
 
     @gen.coroutine
-    def update(self, params):
+    def update(self):
         ''' updates a given event and returns the updated object!'''
 
         update_sql = ''' UPDATE Events SET
@@ -36,22 +51,21 @@ class EventsEntityManager(BaseEntityManager):
                               to_timestamp({4}),
                               now()
                             ) where id = {5};
-                    '''.format(params.get('name')[0],
-                       params.get('latitude')[0],
-                       params.get('longitude')[0],
-                       params.get('start_time')[0],
-                       params.get('end_time')[0],
-                       params.get('id')[0]
+                    '''.format(self.get_value('name'),
+                               self.get_value('latitude'),
+                               self.get_value('longitude'),
+                               self.get_value('start_time'),
+                               self.get_value('end_time'),
+                               self.get_value('id')
                        )
         yield self.execute_sql(update_sql)
 
         ''' query the update record and return it back!'''
-        sql = ''' SELECT * FROM Events WHERE id={}; '''.format(params.get('id')[0])
-        cursor = yield self.execute_sql(sql)
-        raise gen.Return(cursor.fetchone())
+        result = yield self.fetch_one()
+        raise gen.Return(result)
 
     @gen.coroutine
-    def insert(self, params):
+    def insert(self):
         ''' insert a given into and returns the inserted object!'''
 
         insert_sql = ''' INSERT INTO Events
@@ -71,15 +85,13 @@ class EventsEntityManager(BaseEntityManager):
                               now()
                             )
                             RETURNING
-                            id, name, location, start_time, end_time, created_at;
-                    '''.format(params.get('name')[0],
-                        params.get('latitude')[0],
-                        params.get('longitude')[0],
-                        params.get('start_time')[0],
-                        params.get('end_time')[0]
+                            id, name, ST_AsGeoJson(location) AS location, start_time, end_time, created_at;
+                    '''.format(self.get_value('name'),
+                               self.get_value('latitude'),
+                               self.get_value('longitude'),
+                               self.get_value('start_time'),
+                               self.get_value('end_time')
                     )
-        print(insert_sql)
-        import pdb; pdb.set_trace();
         cursor = yield self.execute_sql(insert_sql)
         raise gen.Return(cursor.fetchone())
 

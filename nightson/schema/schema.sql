@@ -19,13 +19,18 @@ CREATE EXTENSION postgis_tiger_geocoder;
 
 
 CREATE TABLE Users(
-  id INT PRIMARY KEY NOT NULL ,
+  id SERIAL PRIMARY KEY NOT NULL ,
   first_name VARCHAR(64) NOT NULL ,
   last_name VARCHAR(64) NOT NULL ,
   email VARCHAR(32) NOT NULL ,
-  password VARCHAR(16) NOT NULL ,
+  photo_url VARCHAR(512),
+  password VARCHAR(256) NOT NULL ,
   phone VARCHAR(12) ,
-  location GEOGRAPHY(POINT,4326)
+  location GEOGRAPHY(POINT,4326),
+  location_recorded_at TIMESTAMP,
+  created_at TIMESTAMP,
+  deleted_at TIMESTAMP,
+  updated_at TIMESTAMP
 );
 
 
