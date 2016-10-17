@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from nightson.handlers.events import EventsHandler
 from nightson.handlers.health import HealthHandler
 from nightson.handlers.users import UsersHandler
+from nightson.handlers.login import LoginHandler
 
 
 def get_routes():
@@ -10,4 +11,5 @@ def get_routes():
         (r'/health', HealthHandler),
         (r'/events', EventsHandler),
         (r'/users', UsersHandler),
+        (r'/login', LoginHandler),
     ]

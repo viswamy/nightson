@@ -15,4 +15,3 @@ class BaseHandler(tornado.web.RequestHandler):
         ''' Executes an sql statement and returns the cursor '''
         cursor = yield self.db.execute(sql)
         raise gen.Return(cursor)
-
