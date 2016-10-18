@@ -16,7 +16,7 @@ class LogoutManager(BaseEntityManager):
     @gen.coroutine
     def logout_current_session(self, user):
         session_token = user['token']
-        sql = '''DELETE FROM Sessions WHERE token = {0}'''.format(session_token)
+        sql = '''DELETE FROM Sessions WHERE token = '{0}' '''.format(session_token)
         yield self.execute_sql(sql)
         raise gen.Return({
             'message': 'successfully terminated the session!'
@@ -36,7 +36,7 @@ class LogoutManager(BaseEntityManager):
         all_sessions = (self.get_value('all_sessions') == 'true')
         result = {}
         if(all_sessions):
-            result = yield self.logout_all_session(user)
+            result = yield self.logout_all_sessions(user)
         else:
             result = yield self.logout_current_session(user)
         raise gen.Return(result)
