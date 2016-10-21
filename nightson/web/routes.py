@@ -6,6 +6,7 @@ from nightson.handlers.logout import LogoutHandler
 from nightson.handlers.users import UsersHandler
 from nightson.handlers.login import LoginHandler
 from nightson.handlers.temp import TempHandler
+from nightson.handlers.userevents import UserEventsHandler
 
 def get_routes():
     return [
@@ -15,4 +16,5 @@ def get_routes():
         (r'/login', LoginHandler),
         (r'/temp', TempHandler),
         (r'/logout', LogoutHandler),
+        (r'/userevents', UserEventsHandler),
     ]

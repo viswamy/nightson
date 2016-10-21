@@ -39,6 +39,8 @@ class BaseEntityManager(object):
             params = self.request.body_arguments
         elif(self.request.method == 'PUT'):
             params = self.request.arguments
+        elif(self.request.method == 'DELETE'):
+            params = self.request.body_arguments
 
         if(key not in params):
             return None

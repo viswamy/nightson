@@ -52,3 +52,11 @@ CREATE TABLE Sessions(
   expires_at TIMESTAMP ,
   FOREIGN KEY(user_id) REFERENCES Users(id)
 );
+
+
+CREATE TABLE UsersEvents(
+  user_id INT,
+  event_id INT,
+  FOREIGN KEY (user_id) REFERENCES Users(id),
+  FOREIGN KEY (event_id) REFERENCES Events(id)
+);
