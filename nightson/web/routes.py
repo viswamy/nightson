@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from nightson.handlers.events import EventsHandler
 from nightson.handlers.health import HealthHandler
 from nightson.handlers.logout import LogoutHandler
+from nightson.handlers.signup import SignUpHandler
 from nightson.handlers.users import UsersHandler
 from nightson.handlers.login import LoginHandler
 from nightson.handlers.temp import TempHandler
@@ -22,4 +23,5 @@ def get_routes():
         (r'/userevents', UserEventsHandler),
         (r'/upload', UploadHandler),
         (r'/static/(.*)', web.StaticFileHandler, {'path': './uploads'}),
+        (r'/signup', SignUpHandler),
     ]
