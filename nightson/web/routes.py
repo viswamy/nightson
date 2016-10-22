@@ -9,6 +9,7 @@ from nightson.handlers.login import LoginHandler
 from nightson.handlers.temp import TempHandler
 from nightson.handlers.userevents import UserEventsHandler
 from nightson.handlers.upload import UploadHandler
+from nightson.handlers.update_password import UpdatePasswordHandler
 
 from tornado import web
 
@@ -24,4 +25,5 @@ def get_routes():
         (r'/upload', UploadHandler),
         (r'/static/(.*)', web.StaticFileHandler, {'path': './uploads'}),
         (r'/signup', SignUpHandler),
+        (r'/updatepassword', UpdatePasswordHandler),
     ]

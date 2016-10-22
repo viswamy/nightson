@@ -130,5 +130,30 @@ class UsersEntityManager(BaseEntityManager):
         cursor = yield self.execute_sql(insert_sql)
         raise gen.Return(cursor.fetchone())
 
+    @gen.coroutine
+    def update_password(self, current_user):
+        old_password = self.get_value('old_password')
+        sql = ''' SELECT id, email, password FROM Users WHERE id = '{0}'; '''.format(current_user.get('id'))
+
+        cursor = yield self.execute_sql(sql)
+        result = cursor.fetchone()
+        hashed_password = result.get('password')
+
+        result = {}
+        if(bcrypt.hashpw(old_password, hashed_password) == hashed_password):
+            new_hashed_password = bcrypt.hashpw(self.get_value('new_password'), bcrypt.gensalt())
+            update_password_sql = ''' UPDATE Users SET
+                                        (
+                                          password
+                                        ) =
+                                        (
+                                          '{0}'
+                                        )
+                                '''.format(new_hashed_password)
+            yield self.execute_sql(update_password_sql)
+            result = {
+                'password': 'update successful!'
+            }
+        raise gen.Return(result)
 
 
