@@ -20,6 +20,7 @@ class EventsEntityManager(BaseEntityManager):
         sql = ''' SELECT
                     id,
                     name,
+                    created_by_user_id,
                     ST_AsGeoJson(location) AS location,
                     start_time,
                     end_time,
@@ -65,12 +66,13 @@ class EventsEntityManager(BaseEntityManager):
         raise gen.Return(result)
 
     @gen.coroutine
-    def insert(self):
+    def insert(self, current_user):
         ''' insert a given into and returns the inserted object!'''
 
         insert_sql = ''' INSERT INTO Events
                             (
                               name,
+                              created_by_user_id,
                               location,
                               start_time,
                               end_time,
@@ -79,14 +81,16 @@ class EventsEntityManager(BaseEntityManager):
                             VALUES
                             (
                               '{0}',
-                              ST_GeomFromText('POINT({1} {2})', 4326),
-                              to_timestamp({3}),
+                              {1},
+                              ST_GeomFromText('POINT({2} {3})', 4326),
                               to_timestamp({4}),
+                              to_timestamp({5}),
                               now()
                             )
                             RETURNING
-                            id, name, ST_AsGeoJson(location) AS location, start_time, end_time, created_at;
+                            id, created_by_user_id, name, ST_AsGeoJson(location) AS location, start_time, end_time, created_at;
                     '''.format(self.get_value('name'),
+                               current_user.get('id'),
                                self.get_value('latitude'),
                                self.get_value('longitude'),
                                self.get_value('start_time'),

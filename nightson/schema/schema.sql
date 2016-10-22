@@ -37,12 +37,14 @@ CREATE TABLE Users(
 CREATE TABLE Events(
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(64) NOT NULL ,
+  created_by_user_id INT NOT NULL,
   location GEOGRAPHY(POINT,4326) ,
   start_time TIMESTAMP NOT NULL ,
   end_time TIMESTAMP NOT NULL,
   created_at TIMESTAMP,
   deleted_at TIMESTAMP,
-  updated_at TIMESTAMP
+  updated_at TIMESTAMP,
+  FOREIGN KEY (created_by_user_id) REFERENCES Users(id)
 );
 
 CREATE TABLE Sessions(
