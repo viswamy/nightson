@@ -1,0 +1,76 @@
+1. Singup
+   method: PUT
+   url: /signup
+   fields: first_name, last_name, email, photo_url, password, phone, latitude, longitude, location_recorded_at
+
+2. Login
+   method: POST
+   url: /login
+   fields: email, password
+
+3. Logout
+   method: POST
+   url: /logout
+   fields: all_session (If set to 'true' all session will be kicked out otherwise, only the current session will be kicked out)
+
+4. Health
+   method: GET
+   url: /health
+   fields: None
+
+5. get events
+   method: GET
+   url: /events
+   fields: id
+
+
+6. update event
+   method: POST
+   url: /events
+   fields: name, latitude, longitude, start_time, end_time
+
+
+ 7. create event
+   method: PUT
+   url: /events
+   fields: name, latitude, longitude, start_time, end_time
+
+
+8. get user
+   method: GET
+   url: /users
+   fields: id
+
+9. update user
+   method: POST
+   url: /users
+   fields: first_name, last_name, email, photo_url, phone, location, location_recorded_at
+
+10. RSVP event
+   method: POST
+   url: /userevents
+   fields: event_id
+
+11. un-RSVP event
+   method: DELETE
+   url: /userevents
+   fields: event_id
+
+12. upload photo
+   method: POST
+   url: /upload
+   fields: file_name => should be a file object that should be uploaded
+
+13. get photos
+   method: GET
+   url: /static/<photo.extension>
+   fields: None
+
+14. update password
+   method: POST
+   url: /updatepassword
+   fields: old_password, new_password
+
+
+
+
