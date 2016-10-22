@@ -27,3 +27,18 @@ Other commands:
     \c database => change databse to 'databsae'
     \dt => display tables
     \di => display indexes
+
+
+on Ubuntu =>
+sudo apt-get update
+sudo apt-get install -y postgresql postgresql-contrib
+
+sudo -u postgres createuser -P vswamy
+sudo -u postgres createdb -O nightson vswamy
+
+psql vswamy  -h 127.0.0.1 -d nightson
+ALTER ROLE <user_name> SUPERUSER;
+
+
+postgis and postgress installation link => http://www.saintsjd.com/2014/08/13/howto-install-postgis-on-ubuntu-trusty.html
+
