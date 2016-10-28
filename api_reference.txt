@@ -71,6 +71,12 @@
    url: /updatepassword
    fields: old_password, new_password
 
+15. search
+   method: GET
+   url: /search
+   fields: latitude, longitude, radius (in meters)
+   
+
 
 
 
