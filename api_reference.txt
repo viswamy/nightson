@@ -76,6 +76,10 @@
    url: /search
    fields: latitude, longitude, radius (in meters)
    
+16. authenticate token
+   method: GET
+   url: /tokenauthenticate (returns HTTP_ACCEPTED if token is valid otherwise, HTTP_UNAUTHORIZED)
+   fields: None
 
 
 
