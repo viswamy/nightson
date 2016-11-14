@@ -95,3 +95,10 @@
     method: POST
     url: /updatelocation
     fields: latitude, longitude
+
+20. Get all events subsribed by the current user
+    method: GET
+    url: /userevents
+    fields: None
+
+    

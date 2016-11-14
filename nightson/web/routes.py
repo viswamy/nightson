@@ -14,6 +14,8 @@ from nightson.handlers.tokenauthenticate import TokenAuthenticateHandler
 from nightson.handlers.eventusers import EventUsersHandler
 from nightson.handlers.eventsownedbyuser import EventsOwnedByUser
 from nightson.handlers.updatelocation import UpdateLocationHandler
+from nightson.handlers.userevents import UserEventsHandler
+
 from tornado import web
 
 def get_routes():
@@ -31,6 +33,7 @@ def get_routes():
         (r'/search', SearchHandler),
         (r'/tokenauthenticate', TokenAuthenticateHandler),
         (r'/eventusers', EventUsersHandler),
+        (r'/userevents', UserEventsHandler),
         (r'/eventsownedbyuser', EventsOwnedByUser),
         (r'/updatelocation', UpdateLocationHandler),
     ]
