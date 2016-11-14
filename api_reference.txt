@@ -81,6 +81,8 @@
    url: /tokenauthenticate (returns HTTP_ACCEPTED if token is valid otherwise, HTTP_UNAUTHORIZED)
    fields: None
 
-
-
+17. Get all users subscribed to an event
+    method: GET
+    url: /eventusers
+    fields: event_id
 

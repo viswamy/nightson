@@ -4,7 +4,7 @@ import httplib
 
 from nightson.handlers.auth import AuthHandler
 from tornado import gen
-from nightson.managers.user_events_manager import SubscribeManager
+from nightson.managers.subscribe_manager import SubscribeManager
 import ujson
 import uuid
 
