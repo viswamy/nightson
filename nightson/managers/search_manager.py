@@ -27,7 +27,7 @@ class SearchManager(BaseEntityManager):
                     end_time
                     FROM Events WHERE
                     ST_DWithin(location, ST_GeomFromText('POINT({0} {1})', 4326), {2});
-                    '''.format(latitude, longitude, radius)
+                    '''.format(longitude, latitude, radius)
         cursor = yield self.execute_sql(sql)
         result = cursor.fetchall()
 

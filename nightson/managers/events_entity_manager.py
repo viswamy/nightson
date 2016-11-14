@@ -53,8 +53,8 @@ class EventsEntityManager(BaseEntityManager):
                               now()
                             ) where id = {5};
                     '''.format(self.get_value('name'),
-                               self.get_value('latitude'),
                                self.get_value('longitude'),
+                               self.get_value('latitude'),
                                self.get_value('start_time'),
                                self.get_value('end_time'),
                                self.get_value('id')
@@ -91,8 +91,8 @@ class EventsEntityManager(BaseEntityManager):
                             id, created_by_user_id, name, ST_AsGeoJson(location) AS location, start_time, end_time, created_at;
                     '''.format(self.get_value('name'),
                                current_user.get('id'),
-                               self.get_value('latitude'),
                                self.get_value('longitude'),
+                               self.get_value('latitude'),
                                self.get_value('start_time'),
                                self.get_value('end_time')
                     )

@@ -64,8 +64,8 @@ class UsersEntityManager(BaseEntityManager):
                                self.get_value('email'),
                                self.get_value('photo_url'),
                                self.get_value('phone'),
-                               self.get_value('latitude'),
                                self.get_value('longitude'),
+                               self.get_value('latitude'),
                                self.get_value('location_recorded_at'),
                                self.get_value('id')
                        )
@@ -123,8 +123,8 @@ class UsersEntityManager(BaseEntityManager):
                             self.get_value('photo_url'),
                             hashed_password,
                             self.get_value('phone'),
-                            self.get_value('latitude'),
                             self.get_value('longitude'),
+                            self.get_value('latitude'),
                             self.get_value('location_recorded_at')
                     )
         cursor = yield self.execute_sql(insert_sql)
