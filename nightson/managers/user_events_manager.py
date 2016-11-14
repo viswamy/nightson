@@ -5,13 +5,13 @@ from nightson.managers.session_manager import SessionManager
 from tornado import gen
 import bcrypt
 
-class UserEventsManager(BaseEntityManager):
+class SubscribeManager(BaseEntityManager):
 
     def __init__(self):
         pass
 
     def __init__(self, request):
-        super(UserEventsManager, self).__init__(request)
+        super(SubscribeManager, self).__init__(request)
 
     @gen.coroutine
     def subscribe_user(self, current_user):

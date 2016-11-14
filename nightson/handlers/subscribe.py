@@ -4,17 +4,17 @@ import httplib
 
 from nightson.handlers.auth import AuthHandler
 from tornado import gen
-from nightson.managers.user_events_manager import UserEventsManager
+from nightson.managers.user_events_manager import SubscribeManager
 import ujson
 
 
-class UserEventsHandler(AuthHandler):
+class SubscribeHandler(AuthHandler):
 
     @gen.coroutine
     def post(self):
         ''' Subscribes a User for an Event! '''
-        user_events_manager = UserEventsManager(self.request)
-        result = yield user_events_manager.subscribe_user(self.current_user)
+        subscribe_manager = SubscribeManager(self.request)
+        result = yield subscribe_manager.subscribe_user(self.current_user)
         self.set_status(httplib.OK)
         self.write(ujson.dumps(result))
 
@@ -22,7 +22,7 @@ class UserEventsHandler(AuthHandler):
     @gen.coroutine
     def delete(self):
         ''' Unsubscribes a User for an Event! '''
-        user_events_manager = UserEventsManager(self.request)
-        result = yield user_events_manager.unsubscribe_user(self.current_user)
+        subscribe_manager = SubscribeManager(self.request)
+        result = yield subscribe_manager.unsubscribe_user(self.current_user)
         self.set_status(httplib.OK)
         self.write(ujson.dumps(result))

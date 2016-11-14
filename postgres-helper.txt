@@ -42,3 +42,10 @@ ALTER ROLE <user_name> SUPERUSER;
 
 postgis and postgress installation link => http://www.saintsjd.com/2014/08/13/howto-install-postgis-on-ubuntu-trusty.html
 
+
+
+on local machine:
+restarting postgresql: brew services restart postgresql
+using postgres: psql
+data directory of postgres: /usr/local/var/postgres
+location of binary of postgres: /usr/local/opt/postgresql/bin/postgres

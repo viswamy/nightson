@@ -48,12 +48,12 @@
 
 10. RSVP event
    method: POST
-   url: /userevents
+   url: /subscribe
    fields: event_id
 
 11. un-RSVP event
    method: DELETE
-   url: /userevents
+   url: /subscribe
    fields: event_id
 
 12. upload photo
