@@ -6,7 +6,6 @@ from nightson.handlers.logout import LogoutHandler
 from nightson.handlers.signup import SignUpHandler
 from nightson.handlers.users import UsersHandler
 from nightson.handlers.login import LoginHandler
-from nightson.handlers.temp import TempHandler
 from nightson.handlers.subscribe import SubscribeHandler
 from nightson.handlers.upload import UploadHandler
 from nightson.handlers.update_password import UpdatePasswordHandler
@@ -23,7 +22,6 @@ def get_routes():
         (r'/events', EventsHandler),
         (r'/users', UsersHandler),
         (r'/login', LoginHandler),
-        (r'/temp', TempHandler),
         (r'/logout', LogoutHandler),
         (r'/subscribe', SubscribeHandler),
         (r'/upload', UploadHandler),
