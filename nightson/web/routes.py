@@ -13,6 +13,8 @@ from nightson.handlers.update_password import UpdatePasswordHandler
 from nightson.handlers.search import SearchHandler
 from nightson.handlers.tokenauthenticate import TokenAuthenticateHandler
 from nightson.handlers.eventusers import EventUsersHandler
+from nightson.handlers.eventsownedbyuser import EventsOwnedByUser
+
 from tornado import web
 
 def get_routes():
@@ -31,4 +33,5 @@ def get_routes():
         (r'/search', SearchHandler),
         (r'/tokenauthenticate', TokenAuthenticateHandler),
         (r'/eventusers', EventUsersHandler),
+        (r'/eventsownedbyuser', EventsOwnedByUser),
     ]

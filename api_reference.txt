@@ -86,3 +86,9 @@
     url: /eventusers
     fields: event_id
 
+18. Get all events owned by the current user
+    method: GET
+    url: /eventsownedbyuser
+    fields: None
+
+    
