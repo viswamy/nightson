@@ -156,4 +156,23 @@ class UsersEntityManager(BaseEntityManager):
             }
         raise gen.Return(result)
 
+    @gen.coroutine
+    def update_location(self, current_user):
+        latitude = self.get_value('latitude')
+        longitude = self.get_value('longitude')
+        user_id = current_user.get('id')
+
+        update_location_sql = ''' UPDATE Users SET
+                    (location)
+                    =
+                    (ST_GeomFromText('POINT({0} {1})', 4326))
+                    WHERE id = {2}'''.format(longitude, latitude, user_id)
+
+        yield self.execute_sql(update_location_sql)
+        result = {
+            'location': 'update successful!'
+        }
+        raise gen.Return(result)
+
+
 

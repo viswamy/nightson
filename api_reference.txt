@@ -91,4 +91,7 @@
     url: /eventsownedbyuser
     fields: None
 
-    
+19. Update location for the current_user
+    method: POST
+    url: /updatelocation
+    fields: latitude, longitude
