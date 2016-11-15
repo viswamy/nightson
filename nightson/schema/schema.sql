@@ -37,6 +37,8 @@ CREATE TABLE Users(
 CREATE TABLE Events(
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(64) NOT NULL ,
+  description VARCHAR(1024),
+  photo_url VARCHAR(256),
   created_by_user_id INT NOT NULL,
   location GEOGRAPHY(POINT,4326) ,
   start_time TIMESTAMP NOT NULL ,
@@ -62,3 +64,10 @@ CREATE TABLE UsersEvents(
   FOREIGN KEY (user_id) REFERENCES Users(id),
   FOREIGN KEY (event_id) REFERENCES Events(id)
 );
+
+
+
+-- SOME UPDATES
+
+ALTER TABLE Events ADD COLUMN photo_url VARCHAR(256);
+ALTER TABLE Events ADD COLUMN description VARCHAR(1024);

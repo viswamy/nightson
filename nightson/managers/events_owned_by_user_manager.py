@@ -18,6 +18,8 @@ class EventsOwnedByUserManager(BaseEntityManager):
         sql = ''' SELECT
                   id,
                   name,
+                  description,
+                  photo_url,
                   ST_AsGeoJson(location) AS location,
                   start_time,
                   end_time

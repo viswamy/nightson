@@ -64,6 +64,3 @@ class SessionManager(BaseEntityManager):
         cursor = yield self.execute_sql(sql)
         result = cursor.fetchone()
         raise gen.Return(result)
-
-
-

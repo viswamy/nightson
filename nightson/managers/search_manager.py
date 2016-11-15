@@ -21,6 +21,8 @@ class SearchManager(BaseEntityManager):
         sql = ''' SELECT
                     id,
                     name,
+                    description,
+                    photo_url,
                     created_by_user_id,
                     ST_AsGeoJson(location) AS location,
                     start_time,
