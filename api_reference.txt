@@ -27,13 +27,13 @@
 6. update event
    method: POST
    url: /events
-   fields: id, name, latitude, longitude, start_time, end_time
+   fields: id, name, latitude, longitude, start_time, end_time, photo_url, description
 
 
  7. create event
    method: PUT
    url: /events
-   fields: name, latitude, longitude, start_time, end_time
+   fields: name, latitude, longitude, start_time, end_time, photo_url, description
 
 
 8. get user
