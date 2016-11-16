@@ -20,7 +20,7 @@ class SubscribeHandler(AuthHandler):
 
 
     @gen.coroutine
-    def delete(self):
+    def put(self):
         ''' Unsubscribes a User for an Event! '''
         subscribe_manager = SubscribeManager(self.request)
         result = yield subscribe_manager.unsubscribe_user(self.current_user)

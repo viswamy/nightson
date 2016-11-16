@@ -52,7 +52,7 @@
    fields: event_id
 
 11. un-RSVP event
-   method: DELETE
+   method: PUT
    url: /subscribe
    fields: event_id
 
