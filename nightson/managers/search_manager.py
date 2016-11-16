@@ -14,10 +14,11 @@ class SearchManager(BaseEntityManager):
         super(SearchManager, self).__init__(request)
 
     @gen.coroutine
-    def get_events(self):
+    def get_events(self, current_user):
         latitude = self.get_value('latitude')
         longitude = self.get_value('longitude')
         radius = self.get_value('radius')
+        user_id = current_user.get('id')
         sql = ''' SELECT
                     id,
                     name,
@@ -26,10 +27,13 @@ class SearchManager(BaseEntityManager):
                     created_by_user_id,
                     ST_AsGeoJson(location) AS location,
                     start_time,
-                    end_time
-                    FROM Events WHERE
+                    end_time,
+                    CASE WHEN UsersEvents.user_id = {3} THEN 1 ELSE 0 END AS rsvp
+                    FROM Events LEFT OUTER JOIN UsersEvents ON Events.id = UsersEvents.event_id
+                    WHERE
                     ST_DWithin(location, ST_GeomFromText('POINT({0} {1})', 4326), {2});
-                    '''.format(longitude, latitude, radius)
+                    '''.format(longitude, latitude, radius, user_id)
+        print(sql)
         cursor = yield self.execute_sql(sql)
         result = cursor.fetchall()
 

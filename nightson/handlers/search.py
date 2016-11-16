@@ -15,6 +15,6 @@ class SearchHandler(AuthHandler):
         ''' Returns list of events given location and radius '''
         search_manager = SearchManager(self.request)
 
-        result = yield search_manager.get_events()
+        result = yield search_manager.get_events(self.current_user)
         self.set_status(httplib.OK)
         self.write(ujson.dumps(result))
