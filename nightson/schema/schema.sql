@@ -71,3 +71,11 @@ CREATE TABLE UsersEvents(
 
 ALTER TABLE Events ADD COLUMN photo_url VARCHAR(256);
 ALTER TABLE Events ADD COLUMN description VARCHAR(1024);
+
+
+-- CREATING INDEXES
+CREATE INDEX events_spatial_index ON Events USING GIST(location);
+CREATE INDEX users_spatial_index ON Users USING GIST(location);
+CREATE INDEX users_id_in_usersevents ON UsersEvents USING btree(user_id);
+CREATE INDEX event_id_in_usersevents ON UsersEvents USING btree(event_id);
+CREATE INDEX token_in_sessions ON Sessions USING btree(token);
